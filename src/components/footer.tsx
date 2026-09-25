@@ -43,6 +43,12 @@ export function Footer() {
           </Link>
           <Link
             className="rounded-lg py-1.5 transition-colors hover:text-forest"
+            href="/play"
+          >
+            Play & Fitness
+          </Link>
+          <Link
+            className="rounded-lg py-1.5 transition-colors hover:text-forest"
             href="/flora"
           >
             Flora

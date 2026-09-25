@@ -1,18 +1,18 @@
 /**
  * Garden-level information.
  *
- * Confirmed 2026-09: name, type, location. Everything a visitor would read as
- * fact must be verified before field testing — fields that are still unconfirmed
- * stay `null` so the UI simply omits that row instead of printing a guess.
+ * Confirmed 2026-09 from the garden's public Google Maps listing (hours,
+ * rating) and its visitor reviews (2024 renovation, central Ambedkar statue,
+ * children's play area, walking/exercise use). Everything a visitor would read
+ * as fact must still be checked against the garden's own boards before field
+ * testing — unconfirmed fields stay `null` so the UI omits the row.
  *
  * Still needed on site:
- *  - hours / entry rules as posted at the gate        → `hours`, `entryNote`
+ *  - entry rules as posted at the gate                → `entryNote`
  *  - the garden's own signage and do's/don'ts board   → `src/data/guidelines.ts`
  *  - the species actually growing here                → `src/data/flora.ts`
- *  - whether a statue / memorial exists, and its year → "statue" discovery
+ *  - the exact play equipment installed               → `src/data/play-and-fitness.ts`
  *  - the garden's own photos                          → `src/data/images.ts`
- *    (that file holds freely-licensed stand-ins from Wikimedia Commons —
- *    swap in on-site shots and update the credits before field testing)
  */
 export const garden = {
   name: "Bharatratna Dr. Babasaheb Ambedkar Udyan",
@@ -30,10 +30,35 @@ export const garden = {
     postalCode: "400051",
     plusCode: "3R6X+5PV",
   },
-  /** Unconfirmed — hide until read off the board at the gate. */
-  hours: null as string | null,
+  /** Hours as listed on the garden's Google Maps listing (all seven days). */
+  hours: "Open daily · 4–8 pm" as string | null,
   entryNote: null as string | null,
 };
+
+/** What a visitor will actually find in the garden (Maps-listing evidence). */
+export interface GardenHighlight {
+  title: string;
+  text: string;
+}
+
+export const gardenHighlights: GardenHighlight[] = [
+  {
+    title: "Fresh from a 2024 makeover",
+    text: "The garden was renovated in 2024 with new landscaping and play equipment.",
+  },
+  {
+    title: "A statue at the centre",
+    text: "A statue of Bharat Ratna Dr. Babasaheb Ambedkar stands at the heart of the garden.",
+  },
+  {
+    title: "A play corner for children",
+    text: "Slides, rides and a small climbing wall for young visitors.",
+  },
+  {
+    title: "Room to move",
+    text: "A walking track and open space — the neighbourhood's spot for walks, jogs, yoga and exercise.",
+  },
+];
 
 /** Single-line address, e.g. for the garden page and metadata. */
 export const gardenAddress = [

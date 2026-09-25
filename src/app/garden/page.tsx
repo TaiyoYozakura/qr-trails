@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
+  Baby,
   Clock,
   Compass,
   Flower2,
@@ -18,6 +19,7 @@ import {
   featurePhotos,
   garden,
   gardenAddress,
+  gardenHighlights,
   gardenMapUrl,
   heroPhoto,
   trails,
@@ -150,6 +152,29 @@ export default function GardenPage() {
         </div>
       </section>
 
+      {/* What you'll find here — confirmed from the garden's public listing */}
+      <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+        <Entrance>
+          <h2 className="font-display text-3xl font-semibold tracking-tight text-charcoal text-balance sm:text-4xl">
+            What you&apos;ll find here
+          </h2>
+        </Entrance>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {gardenHighlights.map((h, i) => (
+            <Entrance key={h.title} delay={0.06 * (i + 1)}>
+              <div className="h-full rounded-3xl border border-forest/10 bg-white p-5 shadow-card">
+                <h3 className="font-display text-lg font-semibold text-charcoal">
+                  {h.title}
+                </h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
+                  {h.text}
+                </p>
+              </div>
+            </Entrance>
+          ))}
+        </div>
+      </section>
+
       {/* Trails in this garden */}
       <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
         <div className="flex flex-wrap items-end justify-between gap-4">
@@ -207,8 +232,14 @@ export default function GardenPage() {
             Also in the garden
           </h2>
         </Entrance>
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
+            {
+              href: "/play",
+              icon: Baby,
+              title: "Play & Fitness",
+              text: "The play corner, the walking track, room to move.",
+            },
             {
               href: "/flora",
               icon: Leaf,

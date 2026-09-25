@@ -24,6 +24,13 @@ export default function FloraPage() {
           Short introductions to the plants growing right beside you.
         </p>
       </Entrance>
+      <Entrance delay={0.16}>
+        <p className="mt-3 max-w-xl rounded-2xl bg-sun-soft/60 px-4 py-3 text-sm leading-relaxed text-charcoal">
+          We are still confirming exactly which of these grow in Ambedkar
+          Udyan — if you can spot one on your visit, you have helped the
+          garden&apos;s little field guide grow.
+        </p>
+      </Entrance>
 
       <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {plants.map((plant, i) => (

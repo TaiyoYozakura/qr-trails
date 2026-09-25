@@ -1,4 +1,5 @@
 export * from "./garden";
+export * from "./play-and-fitness";
 export * from "./trails";
 export * from "./topics";
 export * from "./quizzes";

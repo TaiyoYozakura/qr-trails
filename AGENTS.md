@@ -68,6 +68,11 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 - All garden/flora facts are **placeholder TODOs** (`src/data/garden.ts`, `flora.ts`) waiting on
   real on-site data — never treat them as verified, and don't print or deploy them as fact.
+  Partially confirmed from the garden's Google Maps listing (2026-09): hours
+  (daily 4–8 pm), 2024 renovation, central Ambedkar statue, play corner with
+  slides + small climbing wall; `src/data/play-and-fitness.ts` splits its
+  entries by `evidence` ("reported" vs "to-confirm") — keep that honesty when
+  adding facilities.
 - `src/data/` is the single source of truth: nav, home, explore, the `/qr` sheet and progress all
   derive from it, so adding a trail only touches `trails.ts` + `topics.ts`. Note that the
   discoveries live in **`topics.ts`** (some planning docs call this file `discoveries.ts`).

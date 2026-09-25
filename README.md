@@ -35,6 +35,7 @@ Guidelines, Development Plan, Project Rules, Testing Plan).
 | `/quiz/[id]?scan=1` | Quick quiz for a discovery — **locked until scanned** |
 | `/result/[id]` | Quiz result, or trail recap for a trail id |
 | `/flora` · `/flora/[id]` | Plant index + plant detail |
+| `/play` | Play corner & fitness facilities at the garden |
 | `/guidelines` | Garden do's and don'ts |
 | `/about` | About the CEP prototype |
 | `/admin` | Staff console — content overview, checks, export/import (passcode-gated) |
@@ -132,9 +133,9 @@ Five trails, 19 discoveries, each with a 3-question quiz:
 | **Play Trail** | The slide · the swing set · the slope · the see-saw · the merry-go-round |
 | **Inside a Tree Trail** | Leaves → Trunk → Roots → Water → Ecosystem |
 
-Plus 5 flora entries, grouped garden guidelines, and per-trail completion
-screens. The `/qr` sheet prints one code per destination (currently 36), each
-discovery code carrying its `?scan=1` unlock.
+Plus 5 flora entries, grouped garden guidelines, a play & fitness facilities
+page, and per-trail completion screens. The `/qr` sheet prints one code per
+destination (currently 36), each discovery code carrying its `?scan=1` unlock.
 
 ## Photos
 
@@ -161,8 +162,12 @@ nothing is a stand-in any more.
 
 Nothing in the app states an unverified fact as truth. The remaining gaps:
 
-- `src/data/garden.ts` — `hours` and `entryNote` are `null` until read off the
-  board at the gate (the garden page hides those rows while they are null).
+- `src/data/garden.ts` — hours come from the garden's Maps listing (daily
+  4–8 pm; verify against the gate board); `entryNote` is still `null` until
+  read on site.
+- `src/data/play-and-fitness.ts` — facilities split by evidence: `reported`
+  (seen in the garden's Maps reviews) vs `to-confirm` (must be checked on
+  site before printing QR codes for them).
 - `src/data/guidelines.ts` — generic public-garden do's and don'ts; replace with
   the garden's own posted rules (a photo of the signage is enough).
 - `src/data/flora.ts` — verify every species and fact against the real garden.

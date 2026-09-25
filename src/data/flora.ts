@@ -4,8 +4,10 @@ import type { Plant } from "@/types";
  * Flora entries.
  *
  * NOTE (Content Bible Rule 8): these are common warm-climate garden plants
- * used as placeholders. Verify every plant against the real garden — and its
- * facts — before field testing.
+ * used as candidates — Ambedkar Udyan is a small, well-kept BMC neighbourhood
+ * garden (renovated 2024), so plants like these are plausible but **unverified**.
+ * Confirm the species actually growing there — and each fact — on site before
+ * field testing. The neem and mango pages carry photo stand-ins until then.
  */
 export const plants: Plant[] = [
   {
