@@ -1,26 +1,84 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* QR Trails palette — natural + modern + playful + premium */
+  --color-cream: #f6f2e7;
+  --color-cream-dark: #ece3cd;
+  --color-sand: #e0d3b4;
+  --color-forest: #1e4b2e;
+  --color-forest-deep: #143420;
+  --color-leaf: #5e9e4e;
+  --color-leaf-dark: #4c8a3c;
+  --color-leaf-light: #a9ce8e;
+  --color-sky: #8ecae6;
+  --color-sky-light: #dceef8;
+  --color-sun: #ffd166;
+  --color-sun-soft: #f9e6b8;
+  --color-clay: #f2a05c;
+  --color-clay-soft: #f7d3b1;
+  --color-berry: #cf5f4e;
+  --color-berry-soft: #f3d3cd;
+  --color-charcoal: #2c2b26;
+  --color-ink-soft: #5f5e54;
+  --color-stone: #8f8e82;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --shadow-card: 0 1px 2px rgb(30 45 20 / 0.06), 0 12px 28px -14px rgb(30 45 20 / 0.22);
+  --shadow-card-hover: 0 2px 4px rgb(30 45 20 / 0.08), 0 20px 40px -16px rgb(30 45 20 / 0.28);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-sun);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Even, tidy wrapping on narrow phone screens */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+::selection {
+  background: var(--color-sun-soft);
+}
+
+/*
+ * View transitions (shared-element morphs, Animation Guidelines §30).
+ * The root crossfade is handled by the page template animation, so only
+ * named elements (trail titles, discovery titles, flora names) morph.
+ */
+::view-transition-group(*) {
+  animation-duration: 0.35s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: 0.3s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }
