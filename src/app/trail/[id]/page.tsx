@@ -60,6 +60,7 @@ export default async function TrailPage({
               height={900}
               priority
               sizes="(min-width: 1152px) 72rem, 100vw"
+              style={photo.focus ? { objectPosition: photo.focus } : undefined}
               className="aspect-[21/9] w-full object-cover"
             />
             <div

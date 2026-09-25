@@ -17,6 +17,7 @@ export function Photo({
   height = 1200,
   className = "",
   showCaption = true,
+  framed = true,
 }: {
   photo: GardenPhoto;
   priority?: boolean;
@@ -26,10 +27,15 @@ export function Photo({
   height?: number;
   className?: string;
   showCaption?: boolean;
+  framed?: boolean;
 }) {
   return (
     <figure
-      className={`overflow-hidden rounded-[2rem] border border-forest/10 bg-white shadow-card ${className}`}
+      className={
+        framed
+          ? `overflow-hidden rounded-[2rem] border border-forest/10 bg-white shadow-card ${className}`
+          : `overflow-hidden ${className}`
+      }
     >
       <Image
         src={photo.src}
@@ -38,6 +44,7 @@ export function Photo({
         height={height}
         priority={priority}
         sizes={sizes}
+        style={photo.focus ? { objectPosition: photo.focus } : undefined}
         className={`${aspect} w-full object-cover`}
       />
       {showCaption && (

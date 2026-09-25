@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 import { Entrance } from "@/components/entrance";
 import { PlantIllustration } from "@/components/illustrations/plant";
+import { Photo } from "@/components/photo";
 import { TransitionLink } from "@/components/transition-link";
 import { ViewName } from "@/components/view-name";
-import { plants } from "@/data";
+import { photoCreditNote, plantPhotos, plants } from "@/data";
 
 export const metadata: Metadata = {
   title: "Flora",
@@ -27,8 +28,9 @@ export default function FloraPage() {
       <Entrance delay={0.16}>
         <p className="mt-3 max-w-xl rounded-2xl bg-sun-soft/60 px-4 py-3 text-sm leading-relaxed text-charcoal">
           We are still confirming exactly which of these grow in Ambedkar
-          Udyan — if you can spot one on your visit, you have helped the
-          garden&apos;s little field guide grow.
+          Udyan — the photos show each species, not our garden. If you can
+          spot one on your visit, you have helped the garden&apos;s little
+          field guide grow.
         </p>
       </Entrance>
 
@@ -39,13 +41,23 @@ export default function FloraPage() {
               href={`/flora/${plant.id}`}
               className="group flex h-full flex-col rounded-3xl border border-forest/10 bg-white p-6 shadow-card transition-all duration-200 hover:-translate-y-1 hover:shadow-card-hover"
             >
-              <div className="mx-auto w-36">
-                <PlantIllustration
-                  kind={plant.visual}
-                  accent={plant.accent}
-                  className="w-full"
+              {plantPhotos[plant.id] ? (
+                <Photo
+                  photo={plantPhotos[plant.id]}
+                  width={800}
+                  height={600}
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  aspect="aspect-[4/3]"
                 />
-              </div>
+              ) : (
+                <div className="mx-auto w-36">
+                  <PlantIllustration
+                    kind={plant.visual}
+                    accent={plant.accent}
+                    className="w-full"
+                  />
+                </div>
+              )}
               <h2 className="mt-4 font-display text-2xl font-semibold text-charcoal">
                 <ViewName name={`flora-${plant.id}`}>{plant.name}</ViewName>
               </h2>
@@ -64,6 +76,8 @@ export default function FloraPage() {
           </Entrance>
         ))}
       </div>
+
+      <p className="mt-8 text-xs text-stone">{photoCreditNote}</p>
     </main>
   );
 }

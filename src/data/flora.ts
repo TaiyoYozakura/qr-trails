@@ -3,11 +3,13 @@ import type { Plant } from "@/types";
 /**
  * Flora entries.
  *
- * NOTE (Content Bible Rule 8): these are common warm-climate garden plants
- * used as candidates — Ambedkar Udyan is a small, well-kept BMC neighbourhood
- * garden (renovated 2024), so plants like these are plausible but **unverified**.
- * Confirm the species actually growing there — and each fact — on site before
- * field testing. The neem and mango pages carry photo stand-ins until then.
+ * NOTE (Content Bible Rule 8): the species list is still **unverified** —
+ * these five are the plants a small, well-kept BMC neighbourhood garden in
+ * Mumbai like Ambedkar Udyan (renovated 2024) is most likely to grow, and
+ * each entry says where you would expect to find it in THIS garden. Confirm
+ * the species actually growing there — and each fact — on site before field
+ * testing. The photos are badged stand-ins from Wikimedia Commons until the
+ * team's own shots exist.
  */
 export const plants: Plant[] = [
   {
@@ -15,17 +17,17 @@ export const plants: Plant[] = [
     name: "Neem",
     scientificName: "Azadirachta indica",
     intro:
-      "A familiar tree known for its distinctive leaves and many traditional uses.",
+      "A everyday hero of Mumbai's gardens — the kind of shade tree BMC gardeners plant for the long haul.",
     facts: [
-      "Can grow tall, with a wide, spreading crown.",
-      "Small, fragrant white flowers.",
-      "Produces small olive-like fruits.",
-      "Common in warm climates.",
+      "Grows into a broad, umbrella-shaped crown of shade.",
+      "Small, fragrant white flowers loved by bees.",
+      "Produces small olive-like fruits that birds relish.",
+      "Its leaves and bark have been used in home remedies for centuries.",
     ],
     importance:
-      "Provides shade, cools the air and gives food and shelter to birds and insects.",
+      "One neem can cool the air around it for metres — free shade for walkers and a whole food chain for birds and insects.",
     lookFor:
-      "Can you spot the shape of its leaves? They are pointed, slightly curved and arranged in pairs.",
+      "If a tall, spreading tree shades the walking track, check its leaves: pointed, slightly curved, and arranged in pairs.",
     visual: "tree",
     accent: "#5e9e4e",
   },
@@ -33,17 +35,18 @@ export const plants: Plant[] = [
     id: "mango",
     name: "Mango",
     scientificName: "Mangifera indica",
-    intro: "A beloved fruit tree that can grow very tall.",
+    intro:
+      "The summer favourite — a single mango tree turns a corner of a garden into the coolest seat in Mumbai.",
     facts: [
-      "Young leaves start reddish before turning green.",
-      "Its fruit is enjoyed by people and animals alike.",
-      "A single tree can live for decades.",
-      "Its flowers are small but loved by pollinators.",
+      "Young leaves start reddish before turning deep green.",
+      "Its fruit is enjoyed by people — and by birds and bats.",
+      "A single tree can live and fruit for decades.",
+      "Its tiny flowers swarm with pollinators in spring.",
     ],
     importance:
-      "Shade for hot days, fruit for people and animals, and a home for birds.",
+      "Shade for hot afternoons, fruit for everyone, and a living connection between the garden and the neighbourhood's kitchens.",
     lookFor:
-      "Can you find the long, pointed leaves — and maybe a young reddish one?",
+      "Find the long, pointed leaves — and in late summer, look up: can you spot any mangoes hanging under the canopy?",
     visual: "tree",
     accent: "#4c8a3c",
   },
@@ -51,16 +54,18 @@ export const plants: Plant[] = [
     id: "hibiscus",
     name: "Hibiscus",
     scientificName: "Hibiscus rosa-sinensis",
-    intro: "Known for its big, bright flowers that seem to glow in the sun.",
+    intro:
+      "The flower beds of BMC gardens almost always hide a hibiscus — big, bright blooms that seem to glow at eye level.",
     facts: [
-      "Each flower usually opens for just a day.",
-      "The flowers are a favourite stop for pollinators.",
-      "It loves sunshine and warm weather.",
-      "The long central pistil is easy to spot.",
+      "Each flower usually opens for just a single day.",
+      "Sunbirds and butterflies visit it for nectar.",
+      "It loves the sun and warm coastal weather.",
+      "The long central pistil sticks out like a little flag.",
     ],
     importance:
-      "Its flowers feed bees and butterflies, and bring colour to the garden.",
-    lookFor: "Spot the large open flower with the long central pistil.",
+      "A day-long refuelling station for pollinators — and a burst of colour by the path.",
+    lookFor:
+      "Near the flower beds, spot the large open flower with the long pistil reaching out of the middle.",
     visual: "flower",
     accent: "#f2a05c",
   },
@@ -68,16 +73,18 @@ export const plants: Plant[] = [
     id: "tulsi",
     name: "Tulsi",
     scientificName: "Ocimum tenuiflorum",
-    intro: "A small, fragrant herb with rounded leaves.",
+    intro:
+      "A small herb with a big place in Mumbai's heart — often grown in pots and planters near garden entrances.",
     facts: [
-      "Its leaves have a strong, recognisable smell.",
-      "Bees and other pollinators love its tiny flowers.",
-      "Grown in gardens for generations.",
-      "It grows happily in pots and garden beds.",
+      "Its leaves have a strong, clove-like scent.",
+      "Bees love its spikes of tiny purple flowers.",
+      "Grown in Indian homes and gardens for generations.",
+      "It grows happily in pots, beds and planters.",
     ],
     importance:
-      "An easy-to-find plant that attracts helpful pollinators to the garden.",
-    lookFor: "Rub a leaf gently between your fingers — what can you smell?",
+      "An easy-to-find plant that brings pollinators in close — and a herb many visitors know from home.",
+    lookFor:
+      "Check the planters near the gate. Rub a leaf gently between your fingers — what can you smell?",
     visual: "herb",
     accent: "#5e9e4e",
   },
@@ -85,17 +92,18 @@ export const plants: Plant[] = [
     id: "bougainvillea",
     name: "Bougainvillea",
     scientificName: "Bougainvillea glabra",
-    intro: "A climbing plant famous for its bursts of colour.",
+    intro:
+      "The colour on Mumbai's fences — bougainvillea scrambles over gates and walls in bursts of pink and magenta.",
     facts: [
       "The bright 'petals' are actually modified leaves called bracts.",
       "Its real flowers are small and white, hidden in the centre.",
-      "It thrives in sunshine and warm climates.",
-      "Its tangled branches make great shelter for small birds.",
+      "It thrives in full sun and shrugs off dry spells.",
+      "Its tangled branches give small birds a safe hideout.",
     ],
     importance:
-      "Provides shelter for small birds and insects among its branches.",
+      "Living fencing: it dresses up the garden's edges while sheltering birds and insects among the thorns.",
     lookFor:
-      "Look closely at the colourful parts — they're leaves, not petals.",
+      "Look along the garden's fence line for the colour — then look closer: the petals are leaves, not petals.",
     visual: "flower",
     accent: "#cf5f4e",
   },

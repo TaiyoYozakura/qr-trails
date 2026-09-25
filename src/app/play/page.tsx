@@ -62,7 +62,12 @@ export default function PlayFitnessPage() {
             width={1200}
             height={1600}
             sizes="(min-width: 1152px) 72rem, 100vw"
-            className="aspect-[21/9] w-full object-cover object-top"
+            style={
+              gardenPlaygroundPhoto.focus
+                ? { objectPosition: gardenPlaygroundPhoto.focus }
+                : undefined
+            }
+            className="aspect-[21/9] w-full object-cover"
           />
           <div
             aria-hidden

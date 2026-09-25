@@ -28,6 +28,9 @@ export interface GardenPhoto {
   sourceUrl: string;
   /** True when the photo is NOT of this garden (CC species stand-ins). */
   standIn?: boolean;
+  /** CSS object-position used when the photo is cropped, so wide banners
+   *  keep the garden in frame instead of drifting into sky/gates. */
+  focus?: string;
 }
 
 /* ------------------------------------------------------------------ */
@@ -48,14 +51,16 @@ export const heroPhoto: GardenPhoto = {
     "The real thing: Ambedkar Udyan (May 2023 — the garden got a makeover in 2024).",
   credit: mapsCredit("Saurav Yadav, Jun 2023"),
   sourceUrl: mapsListingUrl,
+  focus: "50% 72%",
 };
 
 export const gardenWidePhoto: GardenPhoto = {
   src: "/images/garden-wide.jpg",
-  alt: "A bright open view across the garden, sky above the trees",
-  caption: "Open sky over the lawns — the garden's calm centre.",
+  alt: "Lawns and tree shade in Ambedkar Udyan on a bright day",
+  caption: "Tree shade over the lawns — the garden's calm centre.",
   credit: mapsCredit("Suputra Koli, Apr 2023"),
   sourceUrl: mapsListingUrl,
+  focus: "50% 68%",
 };
 
 /** The garden's namesake: the Dr. Babasaheb Ambedkar statue at its heart. */
@@ -65,6 +70,7 @@ export const gardenStatuePhoto: GardenPhoto = {
   caption: "The garden's namesake — Dr. Babasaheb Ambedkar, at the heart of the udyan.",
   credit: mapsCredit("Suputra Koli, May 2023"),
   sourceUrl: mapsListingUrl,
+  focus: "50% 58%",
 };
 
 /** Post-renovation (Dec 2024) shot of the play corner's equipment. */
@@ -74,6 +80,7 @@ export const gardenPlaygroundPhoto: GardenPhoto = {
   caption: "The play corner after the 2024 makeover — bright, new equipment.",
   credit: mapsCredit("Google Maps contributor, Dec 2024"),
   sourceUrl: mapsListingUrl,
+  focus: "50% 55%",
 };
 
 /** Post-renovation (Jan 2025) close-up of the play equipment. */
@@ -83,14 +90,16 @@ export const gardenPlayEquipmentPhoto: GardenPhoto = {
   caption: "Up close in the play corner — the equipment the Play Trail explores.",
   credit: mapsCredit("Google Maps contributor, Jan 2025"),
   sourceUrl: mapsListingUrl,
+  focus: "50% 55%",
 };
 
 export const gardenPlayPhoto: GardenPhoto = {
   src: "/images/garden-play.jpg",
-  alt: "Inside Ambedkar Udyan — play equipment and colourful corner",
+  alt: "The play corner under the trees in Ambedkar Udyan",
   caption: "The play corner of the garden.",
   credit: mapsCredit("Rambler_Vinay, Jan 2025"),
   sourceUrl: mapsListingUrl,
+  focus: "50% 52%",
 };
 
 export const gardenPanoPhoto: GardenPhoto = {
@@ -99,6 +108,7 @@ export const gardenPanoPhoto: GardenPhoto = {
   caption: "The whole garden in one sweep.",
   credit: mapsCredit("Balraju Anna, Feb 2022"),
   sourceUrl: mapsListingUrl,
+  focus: "50% 78%",
 };
 
 /** Gallery on /garden — real photos of the real garden. */
@@ -116,13 +126,14 @@ export const topicPhotos: Record<string, GardenPhoto> = {
   statue: gardenStatuePhoto,
 };
 
-/** Trail page banners (by trail id) — real garden photos, reused where needed. */
+/** Trail page banners (by trail id) — real garden photos, cropped to the
+ *  garden (not the sky) via each photo's `focus` point. */
 export const trailPhotos: Record<string, GardenPhoto> = {
   "heritage-trail": gardenStatuePhoto,
   "shade-trail": gardenWidePhoto,
   "garden-life-trail": gardenPanoPhoto,
   "play-trail": gardenPlaygroundPhoto,
-  "tree-trail": gardenWidePhoto,
+  "tree-trail": gardenPlayPhoto,
 };
 
 /* ------------------------------------------------------------------ */
@@ -147,12 +158,46 @@ export const mangoPhoto: GardenPhoto = {
   sourceUrl:
     "https://commons.wikimedia.org/wiki/File:Mangifera_indica_0005.jpg",
   standIn: true,
+  focus: "50% 55%",
+};
+
+export const hibiscusPhoto: GardenPhoto = {
+  src: "/images/hibiscus.jpg",
+  alt: "A bright red hibiscus flower in full bloom",
+  caption: "A hibiscus in bloom — spot the long central pistil.",
+  credit: "Photo: Vengolis · CC BY-SA 4.0 · Wikimedia Commons",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Hibiscus_rosa-sinensis_9068.jpg",
+  standIn: true,
+  focus: "50% 50%",
+};
+
+export const tulsiPhoto: GardenPhoto = {
+  src: "/images/tulsi.jpg",
+  alt: "A tulsi plant with dense green leaves and flower spikes",
+  caption: "Tulsi, the fragrant herb, in leaf.",
+  credit: "Photo: Joydeep (JDP90) · CC BY-SA 3.0 · Wikimedia Commons",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Ocimum_tenuiflorum_24_08_2012.JPG",
+  standIn: true,
+  focus: "50% 50%",
+};
+
+export const bougainvilleaPhoto: GardenPhoto = {
+  src: "/images/bougainvillea.jpg",
+  alt: "Pink bougainvillea bracts in full colour",
+  caption: "Bougainvillea bracts — the 'petals' are actually leaves.",
+  credit: "Photo: Bim24 · CC0 · Wikimedia Commons",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Bougainvillea_or_Bombil_(_in_Cebuano)_10.jpg",
+  standIn: true,
+  focus: "50% 50%",
 };
 
 /** Flora detail pages that have a photo to show (by plant id) — CC stand-ins. */
 export const plantPhotos: Record<string, GardenPhoto> = {
   neem: neemPhoto,
   mango: mangoPhoto,
+  hibiscus: hibiscusPhoto,
+  tulsi: tulsiPhoto,
+  bougainvillea: bougainvilleaPhoto,
 };
 
 /** Discovery pages that reference a species stand-in (by topic id). */

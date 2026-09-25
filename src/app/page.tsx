@@ -28,6 +28,11 @@ export default function Home() {
             height={720}
             priority
             sizes="100vw"
+            style={
+              gardenPanoPhoto.focus
+                ? { objectPosition: gardenPanoPhoto.focus }
+                : undefined
+            }
             className="h-full w-full object-cover"
           />
           <div
