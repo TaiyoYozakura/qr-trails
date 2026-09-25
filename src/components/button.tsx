@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-type Variant = "primary" | "secondary" | "ghost";
+type Variant = "primary" | "secondary" | "ghost" | "onDark" | "outlineDark";
 type Size = "sm" | "md" | "lg";
 
 const variants: Record<Variant, string> = {
@@ -11,6 +11,11 @@ const variants: Record<Variant, string> = {
   secondary:
     "bg-white/70 text-forest ring-1 ring-inset ring-forest/20 hover:bg-white hover:ring-forest/30",
   ghost: "text-forest hover:bg-forest/5",
+  /** Solid light button for dark-green bands — same shape as `primary`. */
+  onDark:
+    "bg-cream text-forest shadow-[0_10px_24px_-14px_rgb(30_75_46_/_0.6)] hover:bg-white",
+  /** Outline button for dark-green bands — same shape as `secondary`. */
+  outlineDark: "text-cream ring-1 ring-inset ring-cream/40 hover:bg-cream/10",
 };
 
 const sizes: Record<Size, string> = {

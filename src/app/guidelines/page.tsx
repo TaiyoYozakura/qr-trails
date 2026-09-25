@@ -102,18 +102,10 @@ export default function GuidelinesPage() {
             Thank you for helping it stay beautiful for the next visitor.
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
-            <ButtonLink
-              href="/explore"
-              size="lg"
-              className="bg-cream text-forest hover:bg-white"
-            >
+            <ButtonLink href="/explore" size="lg" variant="onDark">
               Start a Trail
             </ButtonLink>
-            <ButtonLink
-              href="/garden"
-              size="lg"
-              className="border border-cream/30 bg-transparent text-cream hover:bg-cream/10"
-            >
+            <ButtonLink href="/garden" size="lg" variant="outlineDark">
               About the garden
             </ButtonLink>
           </div>
