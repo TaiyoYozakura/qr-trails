@@ -53,7 +53,9 @@ Trail stops are locked until the visitor physically scans their code:
   (`qr-trails:unlocked-topics`).
 - Arriving at `/learn/<stop>` **without** the query — a typed URL, a shared link,
   or a search-engine crawler — renders a "scan the QR code to open this" screen
-  instead of the content. The content is never sent to that visitor.
+  instead of the content. What a visitor *sees* is only the scan prompt; (the
+  page's script payload still carries the hidden tree so the gate can reveal it
+  after hydration — this is a UX lock, not encryption).
 - `/trail/[id]` stays public: an unscanned stop is listed but disabled, so people
   can see what the trail holds before they start. `/quiz/[id]` is gated too.
 - A stop is also treated as unlocked once it has been completed, so progress
@@ -134,6 +136,27 @@ Plus 5 flora entries, grouped garden guidelines, and per-trail completion
 screens. The `/qr` sheet prints one code per destination (currently 36), each
 discovery code carrying its `?scan=1` unlock.
 
+## Photos
+
+`src/data/images.ts` is the single manifest for web-sourced photography, and it
+holds two clearly separated kinds:
+
+- **Garden photos** — the actual Ambedkar Udyan, taken from the garden's own
+  Google Maps listing (community-contributed photos, © their photographers).
+  They are used as an educational, non-commercial civic showcase with credit
+  lines linking back to the listing; they are **not** freely licensed, so swap
+  in the team's own shots before any commercial or official use.
+- **Species photos** — freely-licensed Wikimedia Commons stand-ins (CC BY /
+  CC BY-SA) for the plants the garden is *expected* to contain, badged
+  "sample photo" in the UI.
+
+Everything is downloaded into `public/images/` — no hotlinking, no third-party
+requests at runtime. Credits render beside every image.
+
+To replace them with your own photos: drop the files into `public/images/`,
+update the entries in `src/data/images.ts`, and delete the `standIn` flags once
+nothing is a stand-in any more.
+
 ### Placeholder content still to confirm on site
 
 Nothing in the app states an unverified fact as truth. The remaining gaps:
@@ -148,6 +171,9 @@ Nothing in the app states an unverified fact as truth. The remaining gaps:
   species, and which play equipment is actually installed.
 - `Topic.placement` — the physical spot for each printed QR code. Used by the
   `/qr` sheet; adjust once the posts are sited.
+- `src/data/images.ts` — garden photos come from the garden's Google Maps
+  listing (© their photographers, credited; replace before commercial use);
+  species photos are CC stand-ins flagged `standIn` in the manifest.
 
 ## Scripts
 

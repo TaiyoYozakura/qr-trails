@@ -34,6 +34,36 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - `globals.css` intentionally suppresses the `::view-transition-*(root)` crossfade so the
   shared-element morphs between pages stay clean; route transitions come from `app/template.tsx`.
 
+### Photos / web-sourced images
+
+- Photography lives in **`src/data/images.ts`** (manifest with alt, caption,
+  credit, sourceUrl) and the files themselves in **`public/images/`**. Render
+  every photo through `components/photo.tsx` so the credit line + source link
+  are always output — CC BY / BY-SA require attribution, and the garden photos
+  (from the garden's own Google Maps listing, © their photographers) are used
+  on a credit + non-commercial basis and should be replaced with the team's own
+  shots before any official/commercial use.
+- Species photos (neem, mango) are **CC stand-ins, not this garden**; they carry
+  `standIn: true`, which the `Photo` component badges as "sample photo".
+- Downloading from `upload.wikimedia.org` needs (a) a custom **User-Agent** and
+  (b) a thumbnail width from the fixed size buckets (1280 / 1920 / …) — other
+  widths return HTTP 400 "Use thumbnail sizes listed on https://w.wiki/GHai".
+- Google Maps photos: `lh3.googleusercontent.com/gps-cs-s/…` URLs take a `=sNNN`
+  (longest side) or `=wNNN-hNNN` size suffix — append `=s1600-k-no` for a
+  high-res still. Drive maps.google.com with the browser tools; the photo grid
+  thumbs are CSS backgrounds, so collect them via `getComputedStyle().backgroundImage`.
+
+### Styling — `cn()` does NOT merge Tailwind classes
+
+- `lib/utils.ts`'s `cn()` is a plain string join, **not** tailwind-merge.
+  Passing an override via `className` (e.g. `bg-cream text-forest` on a
+  `primary` button) does not win by intent — whichever rule comes later in the
+  stylesheet wins, so `bg-forest text-cream` can beat it and paint text on the
+  same colour (an invisible button that only "fixed itself" on hover).
+- When a button needs different colours, **add a variant** to
+  `components/button.tsx` (see `onDark` / `outlineDark` for dark-green bands)
+  instead of overriding via className.
+
 ### Content & data layer
 
 - All garden/flora facts are **placeholder TODOs** (`src/data/garden.ts`, `flora.ts`) waiting on
@@ -58,6 +88,13 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Because those pages read `searchParams`, they are **server-rendered on demand**
   (build output shows `ƒ`) and can no longer be statically exported. `generateStaticParams`
   was removed from both — it is silently ignored on a dynamic route.
+- **Locked-page precision:** the *rendered HTML* shows only the scan prompt, but
+  the embedded RSC flight payload (visible via view-source) still serialises the
+  content tree — the client gate needs it to reveal the page after hydration.
+  So "content never sent" is true for what a visitor *sees*, not for what a
+  determined view-source reader can extract. Closing that would mean splitting
+  the page server-side (content only when `?scan=1` was in the URL) at the cost
+  of the localStorage-reveal for returning visitors.
 - The `/qr` sheet must keep generating `/learn/<id>?scan=1` (`components/qr-print-page.tsx`);
   a code without the query produces a permanently locked stop in the garden.
 - Lock-aware UI: `topic-step-link.tsx` (prev/next + result CTA) and `trail-path.tsx`
