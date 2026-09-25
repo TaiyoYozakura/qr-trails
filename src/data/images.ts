@@ -54,15 +54,34 @@ export const gardenWidePhoto: GardenPhoto = {
   src: "/images/garden-wide.jpg",
   alt: "A bright open view across the garden, sky above the trees",
   caption: "Open sky over the lawns — the garden's calm centre.",
-  credit: mapsCredit("Google Maps contributor"),
+  credit: mapsCredit("Suputra Koli, Apr 2023"),
   sourceUrl: mapsListingUrl,
 };
 
-export const gardenPathPhoto: GardenPhoto = {
-  src: "/images/garden-path.jpg",
-  alt: "Inside Ambedkar Udyan — greenery and shade",
-  caption: "Inside the garden, under the trees.",
-  credit: mapsCredit("Google Maps contributor"),
+/** The garden's namesake: the Dr. Babasaheb Ambedkar statue at its heart. */
+export const gardenStatuePhoto: GardenPhoto = {
+  src: "/images/garden-statue.jpg",
+  alt: "The statue of Dr. Babasaheb Ambedkar at the centre of Ambedkar Udyan",
+  caption: "The garden's namesake — Dr. Babasaheb Ambedkar, at the heart of the udyan.",
+  credit: mapsCredit("Suputra Koli, May 2023"),
+  sourceUrl: mapsListingUrl,
+};
+
+/** Post-renovation (Dec 2024) shot of the play corner's equipment. */
+export const gardenPlaygroundPhoto: GardenPhoto = {
+  src: "/images/garden-playground.jpg",
+  alt: "Colourful play equipment in Ambedkar Udyan's play corner",
+  caption: "The play corner after the 2024 makeover — bright, new equipment.",
+  credit: mapsCredit("Google Maps contributor, Dec 2024"),
+  sourceUrl: mapsListingUrl,
+};
+
+/** Post-renovation (Jan 2025) close-up of the play equipment. */
+export const gardenPlayEquipmentPhoto: GardenPhoto = {
+  src: "/images/garden-play-equipment.jpg",
+  alt: "Close-up of red and orange play equipment at Ambedkar Udyan",
+  caption: "Up close in the play corner — the equipment the Play Trail explores.",
+  credit: mapsCredit("Google Maps contributor, Jan 2025"),
   sourceUrl: mapsListingUrl,
 };
 
@@ -70,7 +89,7 @@ export const gardenPlayPhoto: GardenPhoto = {
   src: "/images/garden-play.jpg",
   alt: "Inside Ambedkar Udyan — play equipment and colourful corner",
   caption: "The play corner of the garden.",
-  credit: mapsCredit("Google Maps contributor"),
+  credit: mapsCredit("Rambler_Vinay, Jan 2025"),
   sourceUrl: mapsListingUrl,
 };
 
@@ -78,30 +97,32 @@ export const gardenPanoPhoto: GardenPhoto = {
   src: "/images/garden-pano.jpg",
   alt: "A wide view across Ambedkar Udyan",
   caption: "The whole garden in one sweep.",
-  credit: mapsCredit("Google Maps contributor"),
+  credit: mapsCredit("Balraju Anna, Feb 2022"),
   sourceUrl: mapsListingUrl,
 };
 
 /** Gallery on /garden — real photos of the real garden. */
 export const featurePhotos: GardenPhoto[] = [
+  gardenStatuePhoto,
   gardenWidePhoto,
-  gardenPathPhoto,
-  gardenPlayPhoto,
+  gardenPlaygroundPhoto,
   gardenPanoPhoto,
 ];
 
-/** Discovery pages that show a real photo (by topic id). */
+/** Discovery pages that show a real photo (by topic id). Garden photos are
+ * defined above; species stand-ins are appended after their declarations. */
 export const topicPhotos: Record<string, GardenPhoto> = {
-  slide: gardenPlayPhoto,
+  slide: gardenPlayEquipmentPhoto,
+  statue: gardenStatuePhoto,
 };
 
 /** Trail page banners (by trail id) — real garden photos, reused where needed. */
 export const trailPhotos: Record<string, GardenPhoto> = {
-  "heritage-trail": gardenWidePhoto,
-  "shade-trail": gardenPathPhoto,
+  "heritage-trail": gardenStatuePhoto,
+  "shade-trail": gardenWidePhoto,
   "garden-life-trail": gardenPanoPhoto,
-  "play-trail": gardenPlayPhoto,
-  "tree-trail": gardenPathPhoto,
+  "play-trail": gardenPlaygroundPhoto,
+  "tree-trail": gardenWidePhoto,
 };
 
 /* ------------------------------------------------------------------ */
@@ -134,9 +155,24 @@ export const plantPhotos: Record<string, GardenPhoto> = {
   mango: mangoPhoto,
 };
 
+/** Discovery pages that reference a species stand-in (by topic id). */
+topicPhotos["neem-tree"] = neemPhoto;
+
 /**
  * One-line disclosure for the *species* photos only. Garden photos are of the
  * actual place and say so; these are not of this garden.
  */
 export const photoCreditNote =
   "sample photos of the species, not this garden — species list still unverified";
+
+/** CC stand-in for the not-yet-confirmed outdoor gym equipment. */
+export const outdoorGymPhoto: GardenPhoto = {
+  src: "/images/outdoor-gym.jpg",
+  alt: "Outdoor gym equipment in a public park",
+  caption:
+    "What BMC outdoor gyms usually look like — the garden's own equipment is still to be confirmed on site.",
+  credit: "Photo: Rodhullandemu · CC BY-SA 4.0 · Wikimedia Commons",
+  sourceUrl:
+    "https://commons.wikimedia.org/wiki/File:Outdoor_gym_at_Copy_Farm_Park.jpg",
+  standIn: true,
+};

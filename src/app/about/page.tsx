@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
 import { QrScanner } from "@/components/qr-scanner";
@@ -7,6 +8,7 @@ import {
   garden,
   gardenAddress,
   gardenMapUrl,
+  gardenPanoPhoto,
   plants,
   topics,
   trails,
@@ -150,6 +152,48 @@ export default function AboutPage() {
           </div>
         </div>
       </Entrance>
+      {/* The developer */}
+      <section className="py-10">
+        <Entrance delay={0.1}>
+          <div className="relative overflow-hidden rounded-[2.5rem] bg-forest px-6 py-14 text-center text-cream sm:px-12">
+            <Image
+              src={gardenPanoPhoto.src}
+              alt=""
+              width={1600}
+              height={720}
+              sizes="100vw"
+              aria-hidden
+              className="absolute inset-0 h-full w-full object-cover opacity-10"
+            />
+            <div className="relative">
+              <div
+                aria-hidden
+                className="mx-auto grid size-16 place-items-center rounded-full border border-cream/25 bg-cream/10 font-display text-xl font-semibold tracking-wide"
+              >
+                LA
+              </div>
+              <p className="mt-5 text-xs font-semibold uppercase tracking-[0.2em] text-cream/60">
+                Built by
+              </p>
+              <h2 className="mt-2 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+                Lorde Aizen
+              </h2>
+              <p className="mx-auto mt-7 max-w-xl font-display text-xl leading-relaxed text-cream/90 sm:text-2xl">
+                &ldquo;Most things are decided long before they&rsquo;re
+                revealed.&rdquo;
+              </p>
+              <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-cream/75 sm:text-base">
+                I build with that in mind — understanding the system beneath
+                the surface, thinking several steps ahead, and turning ideas
+                into deliberate, working experiences.
+              </p>
+              <p className="mt-9 font-display text-sm font-semibold uppercase tracking-[0.3em] text-sun">
+                Observe. Understand. Create.
+              </p>
+            </div>
+          </div>
+        </Entrance>
+      </section>
     </main>
   );
 }

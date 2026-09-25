@@ -143,13 +143,15 @@ destination (currently 36), each discovery code carrying its `?scan=1` unlock.
 holds two clearly separated kinds:
 
 - **Garden photos** — the actual Ambedkar Udyan, taken from the garden's own
-  Google Maps listing (community-contributed photos, © their photographers).
-  They are used as an educational, non-commercial civic showcase with credit
-  lines linking back to the listing; they are **not** freely licensed, so swap
-  in the team's own shots before any commercial or official use.
-- **Species photos** — freely-licensed Wikimedia Commons stand-ins (CC BY /
-  CC BY-SA) for the plants the garden is *expected* to contain, badged
-  "sample photo" in the UI.
+  Google Maps listing (community-contributed photos, © their photographers —
+  individually credited, incl. the **statue** and **post-renovation play
+  equipment**). They are used as an educational, non-commercial civic showcase
+  with credit lines linking back to the listing; they are **not** freely
+  licensed, so swap in the team's own shots before any commercial or official
+  use.
+- **Species / equipment photos** — freely-licensed Wikimedia Commons stand-ins
+  (CC BY / CC BY-SA) for the plants and the not-yet-confirmed outdoor gym,
+  badged "sample photo" in the UI.
 
 Everything is downloaded into `public/images/` — no hotlinking, no third-party
 requests at runtime. Credits render beside every image.

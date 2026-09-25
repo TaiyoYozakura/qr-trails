@@ -16,7 +16,7 @@ import {
   playFitnessIntro,
   type Facility,
 } from "@/data/play-and-fitness";
-import { garden, gardenPanoPhoto, gardenPlayPhoto } from "@/data";
+import { garden, gardenPanoPhoto, gardenPlaygroundPhoto, gardenPlayEquipmentPhoto, outdoorGymPhoto } from "@/data";
 
 export const metadata: Metadata = {
   title: "Play & Fitness",
@@ -57,8 +57,8 @@ export default function PlayFitnessPage() {
       <Entrance delay={0.22}>
         <div className="relative mt-8 overflow-hidden rounded-[2.5rem] shadow-card">
           <Image
-            src={gardenPlayPhoto.src}
-            alt={gardenPlayPhoto.alt}
+            src={gardenPlaygroundPhoto.src}
+            alt={gardenPlaygroundPhoto.alt}
             width={1200}
             height={1600}
             sizes="(min-width: 1152px) 72rem, 100vw"
@@ -69,18 +69,58 @@ export default function PlayFitnessPage() {
             className="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent"
           />
           <p className="absolute inset-x-0 bottom-0 p-5 text-sm font-medium text-cream sm:p-6">
-            {gardenPlayPhoto.caption}{" "}
+            {gardenPlaygroundPhoto.caption}{" "}
             <a
-              href={gardenPlayPhoto.sourceUrl}
+              href={gardenPlaygroundPhoto.sourceUrl}
               target="_blank"
               rel="noreferrer"
               className="text-cream/70 underline decoration-cream/40 underline-offset-2"
             >
-              {gardenPlayPhoto.credit}
+              {gardenPlaygroundPhoto.credit}
             </a>
           </p>
         </div>
       </Entrance>
+
+      {/* The corner, up close — post-renovation shots from the listing */}
+      <section className="mx-auto mt-10 max-w-4xl">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+          {[gardenPlaygroundPhoto, gardenPlayEquipmentPhoto, outdoorGymPhoto].map(
+            (photo) => (
+              <figure
+                key={photo.src}
+                className="overflow-hidden rounded-3xl shadow-card"
+              >
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  width={480}
+                  height={640}
+                  sizes="(min-width: 768px) 21rem, 50vw"
+                  className="aspect-[3/4] w-full object-cover"
+                />
+                <figcaption className="bg-white px-4 py-3 text-xs leading-relaxed text-stone">
+                  {photo.standIn && (
+                    <span className="mb-1 inline-block rounded-full bg-sun-soft px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-forest">
+                      sample photo
+                    </span>
+                  )}
+                  {" "}
+                  {photo.caption}{" "}
+                  <a
+                    href={photo.sourceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline decoration-stone/40 underline-offset-2 hover:text-forest"
+                  >
+                    {photo.credit}
+                  </a>
+                </figcaption>
+              </figure>
+            ),
+          )}
+        </div>
+      </section>
 
       {zones.map((zone, zi) => {
         const items = facilities.filter((f) => f.zone === zone);
