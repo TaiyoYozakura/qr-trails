@@ -4,8 +4,9 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Eye, Heart } from "lucide-react";
 import { Entrance } from "@/components/entrance";
 import { PlantIllustration } from "@/components/illustrations/plant";
+import { Photo } from "@/components/photo";
 import { ViewName } from "@/components/view-name";
-import { plants } from "@/data";
+import { plantPhotos, plants } from "@/data";
 import { getPlantByIndex, getPlantIndex } from "./helpers";
 
 export function generateStaticParams() {
@@ -38,6 +39,8 @@ export default async function FloraDetailPage({
 
   if (!plant) notFound();
 
+  const photo = plantPhotos[plant.id];
+
   return (
     <main className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
       <Entrance>
@@ -52,13 +55,17 @@ export default async function FloraDetailPage({
 
       <div className="mt-6 grid gap-8 sm:grid-cols-[0.9fr_1.1fr] sm:items-center">
         <Entrance delay={0.1}>
-          <div className="rounded-[2rem] border border-forest/10 bg-white p-6 shadow-card">
-            <PlantIllustration
-              kind={plant.visual}
-              accent={plant.accent}
-              className="w-full"
-            />
-          </div>
+          {photo ? (
+            <Photo photo={photo} sizes="(min-width: 640px) 45vw, 100vw" />
+          ) : (
+            <div className="rounded-[2rem] border border-forest/10 bg-white p-6 shadow-card">
+              <PlantIllustration
+                kind={plant.visual}
+                accent={plant.accent}
+                className="w-full"
+              />
+            </div>
+          )}
         </Entrance>
 
         <div>

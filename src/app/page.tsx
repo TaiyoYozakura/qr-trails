@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ScanLine } from "lucide-react";
 import { ButtonLink } from "@/components/button";
@@ -6,7 +7,7 @@ import { Entrance } from "@/components/entrance";
 import { HowItWorks } from "@/components/how-it-works";
 import { QrScanner } from "@/components/qr-scanner";
 import { TrailCard } from "@/components/trail-card";
-import { garden, trails } from "@/data";
+import { garden, gardenPanoPhoto, gardenWidePhoto as heroPhotoBand, trails } from "@/data";
 
 export const metadata: Metadata = {
   title: "There's more here than meets the eye",
@@ -17,14 +18,29 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main>
-      {/* Hero */}
-      <section className="overflow-hidden">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-16 pt-12 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:pb-24 lg:pt-20">
+      {/* Hero — full-width photo of the actual garden with overlaid copy */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src={gardenPanoPhoto.src}
+            alt={gardenPanoPhoto.alt}
+            width={1600}
+            height={720}
+            priority
+            sizes="100vw"
+            className="h-full w-full object-cover"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-gradient-to-r from-cream via-cream/85 to-cream/30"
+          />
+        </div>
+        <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 pb-16 pt-14 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:pb-24 lg:pt-20">
           <div>
             <Entrance>
               <p className="inline-flex items-center gap-2 rounded-full border border-forest/15 bg-white px-3.5 py-1.5 text-xs font-semibold uppercase tracking-widest text-forest">
                 <ScanLine className="size-3.5" aria-hidden />
-                Scan to explore
+                {garden.shortName}
               </p>
             </Entrance>
             <Entrance delay={0.08}>
@@ -124,7 +140,17 @@ export default function Home() {
       {/* Garden band */}
       <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
         <Entrance>
-          <div className="rounded-[2.5rem] bg-forest px-6 py-12 text-center text-cream sm:px-12 sm:py-16">
+          <div className="relative overflow-hidden rounded-[2.5rem] bg-forest px-6 py-12 text-center text-cream sm:px-12 sm:py-16">
+            <Image
+              src={heroPhotoBand.src}
+              alt=""
+              width={1600}
+              height={720}
+              sizes="100vw"
+              aria-hidden
+              className="absolute inset-0 h-full w-full object-cover opacity-20"
+            />
+            <div className="relative">
             <h2 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
               The garden is the classroom.
             </h2>
@@ -133,20 +159,13 @@ export default function Home() {
               beside you in {garden.shortName}.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <ButtonLink
-                href="/garden"
-                size="lg"
-                className="bg-cream text-forest hover:bg-white"
-              >
+              <ButtonLink href="/garden" size="lg" variant="onDark">
                 Explore the Garden
               </ButtonLink>
-              <ButtonLink
-                href="/guidelines"
-                size="lg"
-                className="border border-cream/30 bg-transparent text-cream hover:bg-cream/10"
-              >
+              <ButtonLink href="/guidelines" size="lg" variant="outlineDark">
                 Garden Guidelines
               </ButtonLink>
+            </div>
             </div>
           </div>
         </Entrance>

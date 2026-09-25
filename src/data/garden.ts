@@ -10,6 +10,9 @@
  *  - the garden's own signage and do's/don'ts board   → `src/data/guidelines.ts`
  *  - the species actually growing here                → `src/data/flora.ts`
  *  - whether a statue / memorial exists, and its year → "statue" discovery
+ *  - the garden's own photos                          → `src/data/images.ts`
+ *    (that file holds freely-licensed stand-ins from Wikimedia Commons —
+ *    swap in on-site shots and update the credits before field testing)
  */
 export const garden = {
   name: "Bharatratna Dr. Babasaheb Ambedkar Udyan",

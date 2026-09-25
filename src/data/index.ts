@@ -4,6 +4,7 @@ export * from "./topics";
 export * from "./quizzes";
 export * from "./flora";
 export * from "./guidelines";
+export * from "./images";
 
 import { trails } from "./trails";
 import { topics } from "./topics";

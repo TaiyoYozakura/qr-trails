@@ -5,10 +5,11 @@ import { ArrowLeft, ArrowRight, Lightbulb } from "lucide-react";
 import { ButtonLink } from "@/components/button";
 import { Entrance } from "@/components/entrance";
 import { TopicIllustration } from "@/components/illustrations/topic";
+import { Photo } from "@/components/photo";
 import { TopicNavCard } from "@/components/topic-step-link";
 import { UnlockGate } from "@/components/unlock-gate";
 import { ViewName } from "@/components/view-name";
-import { getTopicPosition } from "@/data";
+import { getTopicPosition, topicPhotos } from "@/data";
 
 // NOTE: this route reads `?scan=1`, so it is server-rendered on demand rather
 // than prerendered — that is what lets the server decide locked vs unlocked
@@ -46,6 +47,7 @@ export default async function LearnPage({
   if (!position?.topic || !position.trail) notFound();
 
   const { topic, trail, index, count, previous, next } = position;
+  const photo = topicPhotos[topic.id];
 
   return (
     <UnlockGate topicId={topic.id} scanned={scanned}>
@@ -94,6 +96,17 @@ export default async function LearnPage({
             />
           </div>
         </Entrance>
+
+        {/* real photo when we have one for this stop */}
+        {photo && (
+          <Entrance delay={0.36}>
+            <Photo
+              photo={photo}
+              sizes="(min-width: 768px) 48rem, 100vw"
+              className="mt-6"
+            />
+          </Entrance>
+        )}
 
         {/* explanation */}
         <section className="mt-10 space-y-4">

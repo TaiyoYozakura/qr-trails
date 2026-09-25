@@ -11,13 +11,15 @@ import {
 } from "lucide-react";
 import { ButtonLink } from "@/components/button";
 import { Entrance } from "@/components/entrance";
-import { GardenIllustration } from "@/components/illustrations/garden";
 import { HowItWorks } from "@/components/how-it-works";
+import { Photo } from "@/components/photo";
 import { TrailCard } from "@/components/trail-card";
 import {
+  featurePhotos,
   garden,
   gardenAddress,
   gardenMapUrl,
+  heroPhoto,
   trails,
 } from "@/data";
 
@@ -93,9 +95,12 @@ export default function GardenPage() {
                 aria-hidden
                 className="absolute -inset-6 rounded-[3rem] bg-leaf/15 blur-3xl"
               />
-              <div className="relative rounded-[2rem] border border-forest/10 bg-white p-4 shadow-card">
-                <GardenIllustration className="w-full" />
-              </div>
+              <Photo
+                photo={heroPhoto}
+                priority
+                sizes="(min-width: 1024px) 45vw, 100vw"
+                className="relative"
+              />
             </div>
           </Entrance>
         </div>
@@ -117,6 +122,32 @@ export default function GardenPage() {
             ))}
           </dl>
         </Entrance>
+      </section>
+
+      {/* Have a look around — stand-in photos until on-site shots exist */}
+      <section className="mx-auto max-w-6xl px-4 pb-4 sm:px-6">
+        <Entrance>
+          <h2 className="font-display text-3xl font-semibold tracking-tight text-charcoal text-balance sm:text-4xl">
+            Have a look around
+          </h2>
+        </Entrance>
+        <Entrance delay={0.08}>
+          <p className="mt-2 max-w-xl text-base text-ink-soft">
+            The trees, the shade, the play corner — the things these trails
+            celebrate.
+          </p>
+        </Entrance>
+        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {featurePhotos.map((photo, i) => (
+            <Entrance key={photo.src} delay={0.08 * (i + 1)}>
+              <Photo
+                photo={photo}
+                sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                className="h-full"
+              />
+            </Entrance>
+          ))}
+        </div>
       </section>
 
       {/* Trails in this garden */}
